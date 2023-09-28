@@ -4,9 +4,9 @@ package com.example.demo.utility.Validators;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 
 public class AdultValidator implements ConstraintValidator<Adult, Date> {
     @Override

@@ -5,10 +5,9 @@ import com.example.demo.utility.Validators.Adult;
 import com.example.demo.utility.Validators.French;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
-
 
 import java.util.Date;
 
@@ -29,6 +28,9 @@ public class UserDTO {
 
     private Gender gender;
 
+    // regex from https://ihateregex.io/expr/phone/
+    // Modified to accept empty strings as well, as a user may not have a phone number.
+    @Pattern(regexp = "^$|^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$", flags = Pattern.Flag.UNICODE_CASE, message ="User phone number must be valid")
     private String phoneNumber;
 
     public User userDtoToUser() {

@@ -7,6 +7,7 @@ import com.example.demo.service.UserService;
 import com.example.demo.utility.Exceptions.ResourceAlreadyCreatedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
-        if(userRepository.findByUsername(userDTO.getUsername()).isPresent()){
+        if (userRepository.findByUsername(userDTO.getUsername()).isPresent()) {
             throw new ResourceAlreadyCreatedException("A user with the specified username already exists");
         }
 

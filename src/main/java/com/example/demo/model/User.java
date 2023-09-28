@@ -3,13 +3,15 @@ package com.example.demo.model;
 import com.example.demo.utility.Enums.Gender;
 import com.example.demo.utility.Validators.Adult;
 import com.example.demo.utility.Validators.French;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
-
 
 import java.util.Date;
 

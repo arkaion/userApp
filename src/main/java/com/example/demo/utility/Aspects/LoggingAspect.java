@@ -1,8 +1,6 @@
 package com.example.demo.utility.Aspects;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -17,12 +15,11 @@ public class LoggingAspect {
     public Object logMethodExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
 
-        Object result = joinPoint.proceed(); // Proceed with the method execution
+        Object result = joinPoint.proceed();
 
         long endTime = System.currentTimeMillis();
         long executionTime = endTime - startTime;
 
-        // Log inputs, outputs, and processing time
         System.out.println("Method: " + joinPoint.getSignature().toShortString());
         System.out.println("Inputs: " + Arrays.toString(joinPoint.getArgs()));
         System.out.println("Output: " + result);
