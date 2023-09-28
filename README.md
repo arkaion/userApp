@@ -26,7 +26,7 @@ Quelques bonus sont disponible pour les réalisations suivantes :
 
 Le projet a été développé avec le JDK 21.
 Si vous souhaitez le lancer sur votre machine, il faut que celle-ci dispose d'une version de java similaire ou compatible.
-Vous pouvez trouver un jdk21 ici : https://jdk.java.net/21/
+Vous pouvez trouver un jdk21 sur le [site d'oracle](https://www.oracle.com/java/technologies/downloads/#jdk21-windows)
 
 # Lancement du projet
 
@@ -45,6 +45,7 @@ Deux méthodes sont disponible :
 
 Une fois l'application lancée, vous pouvez utiliser ses services.
 Pour cela, voici [la collection POSTMAN](https://github.com/arkaion/userApp/blob/main/src/main/resources/postman_collection.json "Collection postman") des requêtes utilisées pendant les tests.
+Cette collection doit être importée dans l'application [Postman](https://www.postman.com/downloads/), et il est nécessaire d'y créer un compte (gratuit).
 
 Si vous souhaitez reproduire ses appels sans utiliser la collection, voici leurs détails :
 * Le premier correspond au service d'enregistrement d'utilisateur :
