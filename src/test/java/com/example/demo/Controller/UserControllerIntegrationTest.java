@@ -52,7 +52,7 @@ public class UserControllerIntegrationTest {
                 .andDo(print())
                 .andExpect(status().isFound())
                 .andExpect(jsonPath("$.username", is("john_doe")))
-                .andExpect(jsonPath("$.birthdate", is("1990-01-15T00:00:00.000+00:00")))
+                .andExpect(jsonPath("$.birthdate", is("1990-01-15")))
                 .andExpect(jsonPath("$.country", is("France")))
                 .andExpect(jsonPath("$.gender", is("MALE")))
                 .andExpect(jsonPath("$.phoneNumber", is("+1234567890")));
@@ -69,10 +69,11 @@ public class UserControllerIntegrationTest {
                         .content(userToCreate))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.errors", containsInAnyOrder(
-                        "User must have a country.",
-                        "User must have a username.",
+                        "User birthdate must be valid (yyyy-MM-dd format)",
                         "User must be French.",
-                        "User must be an adult (18 years or older)."
+                        "User gender must be valid (Male, Female, Other or Prefer_not_to_say)",
+                        "User must have a username.",
+                        "User phone number must be valid"
                 )));
         ;
     }
@@ -86,7 +87,11 @@ public class UserControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userToCreate))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("Cannot parse request body"));
+                .andExpect(jsonPath("$.errors", containsInAnyOrder(
+                        "User must have a birthdate.",
+                        "User must have a country.",
+                        "User must have a username."
+                )));
 
 
     }

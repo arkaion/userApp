@@ -35,16 +35,16 @@ public class UserServiceImplTest {
 
     @Test
     public void testAddUserCaseUserOK() throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy", Locale.ENGLISH);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
         UserDTO userDTO = new UserDTO();
         userDTO.setUsername("testUser");
-        userDTO.setBirthdate(formatter.parse("01-01-2000"));
+        userDTO.setBirthdate("2000-01-01");
         userDTO.setCountry("France");
 
         User user = new User();
         user.setUsername("testUser");
-        user.setBirthdate(formatter.parse("01-01-2000"));
+        user.setBirthdate(formatter.parse("2000-01-01"));
         user.setCountry("France");
 
         when(userRepository.findByUsername("testUser")).thenReturn(Optional.empty());
@@ -54,7 +54,7 @@ public class UserServiceImplTest {
 
         assertNotNull(savedUser);
         assertEquals(user.getUsername(), savedUser.getUsername());
-        assertEquals(user.getBirthdate(), savedUser.getBirthdate());
+        assertEquals(user.getBirthdate(), formatter.parse(savedUser.getBirthdate()));
         assertEquals(user.getCountry(), savedUser.getCountry());
     }
 
@@ -82,8 +82,15 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void testGetUserByUsernameCaseUserFound() {
-        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(new User()));
+    public void testGetUserByUsernameCaseUserFound() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+        User user = new User();
+        user.setUsername("testUser");
+        user.setBirthdate(formatter.parse("2000-01-01"));
+        user.setCountry("France");
+
+        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(user));
         assertNotNull(userService.getUserByUsername("testUser"));
     }
 
