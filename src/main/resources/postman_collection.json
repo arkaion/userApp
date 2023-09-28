@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "5e6d1563-dff6-477b-841c-927e61000e58",
+		"name": "ExoSpring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11932927"
+	},
+	"item": [
+		{
+			"name": "Register a new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"john_doe\",\r\n  \"birthdate\": \"1990-01-15\",\r\n  \"country\": \"France\",\r\n  \"gender\": \"FEMALE\",\r\n  \"phoneNumber\": \"+1234567890\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a new user errors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"\",\r\n  \"birthdate\": \"1st of January, 1990\",\r\n  \"country\": \"Germany\",\r\n  \"gender\": \"42\",\r\n  \"phoneNumber\": \"A1Z2E3R4T5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a new user empty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"\",\r\n  \"birthdate\": \"\",\r\n  \"country\": \"\",\r\n  \"gender\": \"\",\r\n  \"phoneNumber\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by username",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/?username=john_doe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "john_doe"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
